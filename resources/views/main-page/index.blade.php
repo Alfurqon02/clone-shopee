@@ -1,0 +1,52 @@
+@extends('layouts.main')
+@section('container')
+    {{-- <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s"> --}}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3" style="margin-top: 120px">
+                    <div class="service-item first-service">
+                        <div class="icon"></div>
+                        <h4>App Maintenance</h4>
+                        <p>You are not allowed to redistribute this template ZIP file on any other website.</p>
+                        <div class="text-button">
+                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service-item second-service">
+                        <div class="icon"></div>
+                        <h4>Rocket Speed of App</h4>
+                        <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.
+                        </p>
+                        <div class="text-button">
+                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service-item third-service">
+                        <div class="icon"></div>
+                        <h4>Multi Workflow Idea</h4>
+                        <p>If this template is beneficial for your work, please support us <a rel="nofollow"
+                                href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p>
+                        <div class="text-button">
+                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="service-item fourth-service">
+                        <div class="icon"></div>
+                        <h4>24/7 Help &amp; Support</h4>
+                        <p>Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion
+                            axe.</p>
+                        <div class="text-button">
+                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{-- </div> --}}
+    @endsection
