@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Item;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -25,7 +26,9 @@ Route::get('/landing-page', function () {
 });
 
 Route::get('/shop', function () {
-    return view('main-page.index');
+    return view('main-page.index',[
+        'items' => Item::all()
+    ]);
 });
 
 Route::post('/register', [UserController::class,'register'])->name('register.submit');

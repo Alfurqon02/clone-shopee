@@ -1,50 +1,21 @@
-@extends('layouts.main')
+@extends('main-page.layouts.main')
 @section('container')
     {{-- <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s"> --}}
         <div class="container">
             <div class="row">
-                <div class="col-lg-3" style="margin-top: 120px">
-                    <div class="service-item first-service">
-                        <div class="icon"></div>
-                        <h4>App Maintenance</h4>
-                        <p>You are not allowed to redistribute this template ZIP file on any other website.</p>
+                <div class="row" style="margin-top: 120px">
+                @foreach ($items as $item)
+                <div class="col-lg-3">
+                    <div class="service-item" style="margin-bottom: 30px">
+                        <div class="mb-3" style="width: 200px; height: 200px; max-width:100%; max-height:100%"><img src="https://th.bing.com/th/id/R.d517ca7838e27df01decc9d70f292071?rik=bI4yhKuy7dDAyg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fshoes-png-sneaker-png-transparent-image-2500.png&ehk=kyWee4brz%2frLtbcCcpd%2flVSuWY6gQv%2b7nouzn%2f%2fsues%3d&risl=&pid=ImgRaw&r=0" alt=""></div>
+                        <h4>{{ $item->name }}</h4>
+                        <p>{{ $item->description }}</p>
                         <div class="text-button">
-                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+                            <a href="#">Detail <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="service-item second-service">
-                        <div class="icon"></div>
-                        <h4>Rocket Speed of App</h4>
-                        <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.
-                        </p>
-                        <div class="text-button">
-                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="service-item third-service">
-                        <div class="icon"></div>
-                        <h4>Multi Workflow Idea</h4>
-                        <p>If this template is beneficial for your work, please support us <a rel="nofollow"
-                                href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p>
-                        <div class="text-button">
-                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="service-item fourth-service">
-                        <div class="icon"></div>
-                        <h4>24/7 Help &amp; Support</h4>
-                        <p>Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion
-                            axe.</p>
-                        <div class="text-button">
-                            <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </div>

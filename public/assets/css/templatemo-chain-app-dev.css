@@ -23,15 +23,15 @@ Table of contents
 12. portfolio
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -135,10 +135,10 @@ img {
   overflow: hidden;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -282,10 +282,10 @@ body {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
@@ -782,10 +782,10 @@ header
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 preloader
---------------------------------------------- 
+---------------------------------------------
 */
 
 .js-preloader {
@@ -884,10 +884,10 @@ preloader
 
 
 
-/* 
+/*
 ---------------------------------------------
 Banner Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .main-banner {
@@ -954,10 +954,10 @@ Banner Style
   color: #fff !important;
 }
 
-/* 
+/*
 ---------------------------------------------
 Services Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .services {
@@ -1018,6 +1018,7 @@ Services Style
   border-radius: 10px;
   border-top-right-radius: 50px;
   transition: all .3s;
+  overflow: hidden;
 }
 
 .service-item .icon {
@@ -1168,7 +1169,7 @@ About Us
 
 
 
-/* 
+/*
 ---------------------------------------------
 The Clients
 ---------------------------------------------
@@ -1313,7 +1314,7 @@ The Clients
 }
 
 
-/* 
+/*
 ---------------------------------------------
 The Clients
 ---------------------------------------------
@@ -1490,10 +1491,10 @@ The Clients
 
 
 
-/* 
+/*
 ---------------------------------------------
 Free Quote
---------------------------------------------- 
+---------------------------------------------
 */
 
 .free-quote {
@@ -1564,10 +1565,10 @@ Free Quote
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Footer Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 footer {
@@ -1798,7 +1799,7 @@ a.btn_red {
 
 .social_login .icon {
   display: inline-block;
-  
+
   padding: 5px 10px;
   margin-right: 10px;
   float: left;
@@ -1938,10 +1939,10 @@ a.btn_red {
 
 
 
-/* 
+/*
 ---------------------------------------------
 responsive
---------------------------------------------- 
+---------------------------------------------
 */
 
 
@@ -1957,7 +1958,7 @@ responsive
   .header-area .main-nav .nav li:last-child {
     padding-left: 20px;
   }
-  
+
   .main-banner .left-content h2 {
     z-index: 2;
     position: relative;
@@ -1965,6 +1966,7 @@ responsive
     line-height: 70px;
     font-size: 50px;
     margin-bottom: 20px;
+    margin-left: 20px;
   }
 
   .main-banner .left-content p {
@@ -1978,7 +1980,7 @@ responsive
   }
   .main-banner:after {
     display: none;
-  } 
+  }
   .main-banner .left-content h2 {
     color: #2a2a2a;
     margin-right: 0;
@@ -2116,7 +2118,7 @@ responsive
     background-color: #fff;
     color: #4b8ef1;
   }
-  footer #search input::placeholder { 
+  footer #search input::placeholder {
     color: #2a2a2a;
   }
   .header-area .main-nav .logo h4 {

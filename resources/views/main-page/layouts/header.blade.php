@@ -10,11 +10,11 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="#top" class="active">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Category</a></li>
-              <li><a href="#pricing">Item</a></li>
-              <li><a href="#newsletter">Newsletter</a></li> 
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#about">About</a></li>
+              <li class="scroll-to-section"><a href="#services">Category</a></li>
+              <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
+              <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
               @auth
               <li><div class="gradient-button"><a id="modal_trigger" href="#"><i class="fa fa-align-justify"></i> Dashboard</a></div></li>
                 @else
