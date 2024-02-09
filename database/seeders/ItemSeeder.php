@@ -16,6 +16,7 @@ class ItemSeeder extends Seeder
         for ($i = 1; $i <= 50; $i++) {
             DB::table('items')->insert([
                 'name' => 'Item ' . $i,
+                'slug'=> 'Item-'.$i,
                 'user_id' => rand(1, 10), // Adjust the range based on your seller IDs
                 'image' => 'path/to/your/image' . $i . '.jpg', // Adjust the path based on your image path
                 'description' => 'Description for Item ' . $i,

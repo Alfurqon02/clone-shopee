@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Item;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +25,13 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ItemSeeder::class,
         ]);
+
+        $categories = Category::all();
+        Item::all()->each(function ($item) use ($categories){
+            $item->categories()->attach(
+                $categories->random(rand(1, 3))->pluck('id')->toArray()
+            );
+        }
+    );
     }
 }
