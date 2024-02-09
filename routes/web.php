@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShopController;
 use App\Models\Item;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::get('/shop', function () {
         'items' => Item::all()
     ]);
 });
+
+Route::get('/{item:slug}',[ShopController::class,'item'])->name('item');
 
 Route::post('/register', [UserController::class,'register'])->name('register.submit');
 Route::post('/login', [UserController::class,'login'])->name('login.submit');

@@ -43,6 +43,17 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+.categoryLabel {
+    display: inline-block;
+    font-size: 1px;
+    padding-right: 3px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #fff;
+    /* background-color: #4b8ef1; */
+}
+
+
 /* clear fix */
 .grid:after {
   content: '';
