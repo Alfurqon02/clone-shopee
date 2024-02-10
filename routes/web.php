@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ShopController;
 use App\Models\Item;
 use App\Models\Category;
@@ -18,9 +19,6 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return redirect('/landing-page');
-});
-Route::get('/landing-page', function () {
     return view('welcome-page.home',[
         'categories' => Category::all()
     ]);
@@ -32,8 +30,10 @@ Route::get('/shop', function () {
     ]);
 });
 
-Route::get('/{item:slug}',[ShopController::class,'item'])->name('item');
 
+Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 Route::post('/register', [UserController::class,'register'])->name('register.submit');
 Route::post('/login', [UserController::class,'login'])->name('login.submit');
-Route::get('/home', [UserController::class,'index'])->name('test');
+Route::get('/{item:slug}',[ShopController::class,'item'])->name('item');
+
+

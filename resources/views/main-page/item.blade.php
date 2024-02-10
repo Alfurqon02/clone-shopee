@@ -5,28 +5,30 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
+                    <div class="col-lg-6">
+                        <div class="right-image wow fadeInRight me-5" data-wow-duration="1s" data-wow-delay="0.5s" style="width: 200px; height: 200px; max-width:100%; max-height:100%;">
+                            <img src="https://th.bing.com/th/id/OIP.TqRgd0FAlCJEdKQrIgyqtAHaE8?rs=1&pid=ImgDetMain" alt="">
+                        </div>
+                    </div>
                     <div class="col-lg-6 align-self-center">
-                        <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
+                        <div class="ms-5 left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
                             data-wow-delay="1s">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h2>{{ $name }}</h2>
-                                    <h1 style="color:white; margin-bottom:3%;">Rp. {{ $price }}</h1>
-                                    <p style="white-space: pre-wrap; word-wrap: break-word">{{ $description }}</p>
+                                    <h3>{{ $name }}</h3>
+                                    <h3 style="-webkit-text-stroke:1px rgb(0, 0, 0); color:white; margin-bottom:3%;">Rp. {{ $price }}</h3>
+                                    <textarea rows="12" cols="75" style="resize: none;
+                                     white-space: pre-wrap; word-wrap: break-word" disabled>{{ $description }}</textarea>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="white-button scroll-to-section">
-                                        <a href="#contact">Start Shopping! <i class="fab fa-google-play"></i></a>
+                                    <div class="white-button scroll-to-section mt-3">
+                                        <a href="#contact">Buy it now!</i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="right-image wow fadeInRight ms-5 mt-5" data-wow-duration="1s" data-wow-delay="0.5s" style="width: 200px; height: 200px; max-width:100%; max-height:100%;">
-                            <img src="https://th.bing.com/th/id/R.d517ca7838e27df01decc9d70f292071?rik=bI4yhKuy7dDAyg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fshoes-png-sneaker-png-transparent-image-2500.png&ehk=kyWee4brz%2frLtbcCcpd%2flVSuWY6gQv%2b7nouzn%2f%2fsues%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@
                         </div>
                         @endforeach
                         <div class="text-button">
-                            <a href="#">Detail <i class="fa fa-arrow-right"></i></a>
+                            <a href="{{ route('item', $item->slug) }}">Detail <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
