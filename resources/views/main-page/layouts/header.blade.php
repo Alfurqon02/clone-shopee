@@ -16,7 +16,7 @@
               <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
               <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
               @auth
-              <li><div class="gradient-button"><a id="modal_trigger" href="#"><i class="fa fa-align-justify"></i> Dashboard</a></div></li>
+              <li><div class="gradient-button"><a id="modal_trigger" href="{{ route('my.item') }}"><i class="fa fa-align-justify"></i> Dashboard</a></div></li>
                 @else
                 <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li>
               @endauth
