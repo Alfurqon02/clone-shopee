@@ -14,7 +14,8 @@ class ShopController extends Controller
             'name'=>$item->name,
             'price'=>$item->price,
             'description'=>$item->description,
-            'stock'=>$item->stock
+            'stock'=>$item->stock,
+            'image'=>$item->image
         ]);
     }
 }

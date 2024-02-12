@@ -113,3 +113,8 @@
   text-align: center;
   margin-top: 1.25rem;
 }
+
+.imgPreview img {
+    padding: 8px;
+    max-width: 100px;
+} 

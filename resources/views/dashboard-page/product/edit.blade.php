@@ -12,7 +12,7 @@
                     <div class="col-xl">
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Add Item</h5>
+                                <h5 class="mb-0">Edit Item</h5>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('store.item') }}" method="POST" enctype="multipart/form-data">
@@ -65,57 +65,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Merged -->
-                    {{-- <div class="col-xl">
-                        <div class="card mb-4">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Basic with Icons</h5>
-                                <small class="text-muted float-end">Merged input group</small>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="input-group input-group-merge mb-4">
-                                        <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                class="mdi mdi-account-outline"></i></span>
-                                        <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                            placeholder="Full Name" aria-label="Full Name"
-                                            aria-describedby="basic-icon-default-fullname2" />
-                                    </div>
-                                    <div class="input-group input-group-merge mb-4">
-                                        <span id="basic-icon-default-company2" class="input-group-text"><i
-                                                class="mdi mdi-office-building-outline"></i></span>
-                                        <input type="text" id="basic-icon-default-company" class="form-control"
-                                            placeholder="Company" aria-label="Company"
-                                            aria-describedby="basic-icon-default-company2" />
-                                    </div>
-                                    <div class="mb-4">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i class="mdi mdi-email-outline"></i></span>
-                                            <input type="text" id="basic-icon-default-email" class="form-control"
-                                                placeholder="Email" aria-label="Email"
-                                                aria-describedby="basic-icon-default-email2" />
-                                            <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-                                        </div>
-                                        <div class="form-text">You can use letters, numbers & periods</div>
-                                    </div>
-                                    <div class="input-group input-group-merge mb-4">
-                                        <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                                class="mdi mdi-phone"></i></span>
-                                        <input type="text" id="basic-icon-default-phone" class="form-control phone-mask"
-                                            placeholder="Phone No" aria-label="Phone No"
-                                            aria-describedby="basic-icon-default-phone2" />
-                                    </div>
-                                    <div class="input-group input-group-merge mb-4">
-                                        <span id="basic-icon-default-message2" class="input-group-text"><i
-                                                class="mdi mdi-message-outline"></i></span>
-                                        <textarea id="basic-icon-default-message" class="form-control" placeholder="Message" aria-label="Message"
-                                            aria-describedby="basic-icon-default-message2" style="height: 60px"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Send</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

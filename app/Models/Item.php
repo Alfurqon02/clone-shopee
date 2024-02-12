@@ -18,6 +18,7 @@ class Item extends Model
         'stock',
         'description',
         'user_id',
+        'image'
     ];
 
 

@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="right-image wow fadeInRight me-5" data-wow-duration="1s" data-wow-delay="0.5s" style="width: 200px; height: 200px; max-width:100%; max-height:100%;">
-                            <img src="https://th.bing.com/th/id/OIP.TqRgd0FAlCJEdKQrIgyqtAHaE8?rs=1&pid=ImgDetMain" alt="">
+                            <img src="{{ asset($image) }}" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6 align-self-center">

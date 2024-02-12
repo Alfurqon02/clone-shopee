@@ -7,8 +7,8 @@
                 @foreach ($items as $item)
                 <div class="col-lg-3">
                     <div class="service-item" style="margin-bottom: 30px">
-                        <div class="mb-3" style="width: 200px; height: 200px; max-width:100%; max-height:100%"><img src="https://th.bing.com/th/id/R.d517ca7838e27df01decc9d70f292071?rik=bI4yhKuy7dDAyg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fshoes-png-sneaker-png-transparent-image-2500.png&ehk=kyWee4brz%2frLtbcCcpd%2flVSuWY6gQv%2b7nouzn%2f%2fsues%3d&risl=&pid=ImgRaw&r=0" alt=""></div>
-                        <h4 class="mb-0">{{ $item->name }}</h4>
+                        <div class="mb-3" style="width: 200px; height: 200px; max-width:100%; max-height:100%"><img src="{{ $item->image }}" alt=""></div>
+                        <h4 class="mb-0">{{ Str::limit($item->name, 19, $end = '...') }}</h4>
                         @foreach ($item->categories as $category)
                         <div class="categoryLabel">
                             <p>{{ $category->name }}</p>
