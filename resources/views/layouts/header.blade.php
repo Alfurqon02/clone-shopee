@@ -4,9 +4,12 @@
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="assets/images/logo.png" alt="Chain App Dev">
+            <div class="logo d-flex">
+                <a href="/">
+              <img width="75" height="75" src="{{ asset('assets/images/myshoppu-logo.png') }}" alt="My Shoppu">
             </a>
+        </div>
+
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
@@ -14,9 +17,9 @@
               <li><a href="#about">About</a></li>
               <li><a href="#services">Category</a></li>
               <li><a href="#pricing">Item</a></li>
-              <li><a href="#newsletter">Newsletter</a></li> 
+              <li><a href="#newsletter">Newsletter</a></li>
               @auth
-              <li><div class="gradient-button"><a id="modal_trigger" href="#"><i class="fa fa-align-justify"></i> Dashboard</a></div></li>
+              <li><div class="gradient-button"><a  href="{{ route('my.home') }}"><i class="fa fa-align-justify"></i> Dashboard</a></div></li>
                 @else
                 <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li>
               @endauth

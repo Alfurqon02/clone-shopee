@@ -8,9 +8,9 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
 
-class DashboardController extends Controller
+class DashboardProductController extends Controller
 {
     // public function index(){
     //     return view('dashboard-page.product.index',[
@@ -20,8 +20,9 @@ class DashboardController extends Controller
 
     public function myItem()
     {
+        $myItems = Item::where('user_id', Auth::user()->id)->get();
         return view('dashboard-page.product.index', [
-            'items' => Item::all()
+            'items' => $myItems
         ]);
     }
 

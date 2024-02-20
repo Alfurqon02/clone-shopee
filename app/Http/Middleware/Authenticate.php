@@ -12,6 +12,8 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        $request->session()->put('showModal', true);
+        return $request->expectsJson() ? null : route('landing-page');
+        // return redirect(route('landing-page'))->with('message', 'You must login first.');
     }
 }

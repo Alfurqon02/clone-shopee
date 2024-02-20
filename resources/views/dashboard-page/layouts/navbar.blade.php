@@ -10,32 +10,8 @@ id="layout-navbar">
 </div>
 
 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-  <!-- Search -->
-  {{-- <div class="navbar-nav align-items-center">
-    <div class="nav-item d-flex align-items-center">
-      <i class="mdi mdi-magnify mdi-24px lh-0"></i>
-      <input
-        type="text"
-        class="form-control border-0 shadow-none bg-body"
-        placeholder="Search..."
-        aria-label="Search..." />
-    </div>
-  </div> --}}
-  <!-- /Search -->
 
   <ul class="navbar-nav flex-row align-items-center ms-auto">
-    <!-- Place this tag where you want the button to render. -->
-    {{-- <li class="nav-item lh-1 me-3">
-      <a
-        class="github-button"
-        href="https://github.com/themeselection/materio-bootstrap-html-admin-template-free"
-        data-icon="octicon-star"
-        data-size="large"
-        data-show-count="true"
-        aria-label="Star themeselection/materio-bootstrap-html-admin-template-free on GitHub"
-        >Star</a
-      >
-    </li> --}}
 
     <!-- User -->
     <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -57,8 +33,10 @@ id="layout-navbar">
                 </div>
               </div>
               <div class="flex-grow-1">
-                <h6 class="mb-0">John Doe</h6>
-                <small class="text-muted">Admin</small>
+                @if(Auth::check())
+                <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                {{-- <small class="text-muted">Admin</small> --}}
+                @endif
               </div>
             </div>
           </a>
@@ -79,19 +57,12 @@ id="layout-navbar">
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
-            <span class="d-flex align-items-center align-middle">
-              <i class="flex-shrink-0 mdi mdi-credit-card-outline me-1 mdi-20px"></i>
-              <span class="flex-grow-1 align-middle ms-1">Billing</span>
-              <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-            </span>
-          </a>
         </li>
         <li>
           <div class="dropdown-divider my-1"></div>
         </li>
         <li>
-          <a class="dropdown-item" href="javascript:void(0);">
+          <a class="dropdown-item" href="javascript:void(0);"onclick="logout()">
             <i class="mdi mdi-power me-1 mdi-20px"></i>
             <span class="align-middle">Log Out</span>
           </a>
@@ -103,4 +74,18 @@ id="layout-navbar">
 </div>
 </nav>
 
+<script>
+    function logout() {
+        // Using axios library for example
+        axios.post('/logout')
+            .then(response => {
+                // Handle successful logout (redirect, show message, etc.)
+                window.location.href = response.data.redirect; // Replace with your logic
+            })
+            .catch(error => {
+                // Handle logout error
+                console.error(error);
+            });
+    }
+</script>
 <!-- / Navbar -->
