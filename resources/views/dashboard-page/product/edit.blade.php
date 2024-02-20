@@ -15,8 +15,9 @@
                                 <h5 class="mb-0">Edit Item</h5>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('store.item') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('update.item',$item->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-floating form-floating-outline mb-4">
                                         <div class="imgPreview"> </div>
                                     </div>
@@ -26,11 +27,11 @@
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
                                         <input name="name" type="text" class="form-control" id="name"
-                                            placeholder="Your Item Name" />
+                                            placeholder="Your Item Name" value="{{ old('name', $item->name) }}"/>
                                         <label for="name">Name</label>
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
-                                        <select multiple name="category[]" class="form-select" id="category[]" style="height: 300%">
+                                        <select multiple name="category[]" class="form-select selectpicker" id="category[]" style="height: 300%">
                                             <option disabled>Select the category you need</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -40,12 +41,13 @@
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
                                         <input name="price" type="number" id="price" class="form-control"
-                                            placeholder="Item Price" />
+                                            placeholder="Item Price" value="{{ old('price', $item->price) }}"/>
                                         <label for="price">Price</label>
                                     </div>
+                                    <input type="hidden" name="slug" id="slug" value="">
                                     <div class="form-floating form-floating-outline mb-4">
                                         <input name="stock" type="number" id="stock" class="form-control"
-                                            placeholder="Item Stock" />
+                                            placeholder="Item Stock" value="{{ old('stock', $item->stock) }}"/>
                                         <label for="stock">Stock</label>
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
@@ -57,7 +59,7 @@
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
                                         <textarea name="description" id="description" class="form-control" placeholder="This is your item description"
-                                            style="height: 60px"></textarea>
+                                            style="height: 60px">{{ old('description', $item->description) }}</textarea>
                                         <label for="description">Description</label>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add</button>

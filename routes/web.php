@@ -35,9 +35,10 @@ Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard'
 
 Route::get('/product', [DashboardController::class,'myItem'])->name('my.item');
 Route::get('/product/add', [DashboardController::class, 'addItem'])->name('add.item');
+Route::post('/product', [DashboardController::class, 'storeItem'])->name('store.item');
 Route::get('/product/{item:slug}/edit', [DashboardController::class, 'editItem'])->name('edit.item');
-Route::post('/product/add', [DashboardController::class, 'storeItem'])->name('store.item');
-Route::delete('/product/{item:id}/delete', [DashboardController::class, 'destroyItem'])->name('destroy.item');
+Route::delete('/product/{item:id}', [DashboardController::class, 'destroyItem'])->name('destroy.item');
+Route::put('/product/{item:id}', [DashboardController::class, 'updateItem'])->name('update.item');
 
 Route::post('/register', [UserController::class,'register'])->name('register.submit');
 Route::post('/login', [UserController::class,'login'])->name('login.submit');

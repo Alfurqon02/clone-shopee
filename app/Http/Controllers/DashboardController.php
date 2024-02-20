@@ -7,6 +7,8 @@ use App\Models\Item;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -33,7 +35,7 @@ class DashboardController extends Controller
     public function storeItem(Request $request)
     {
         $validatedData = $request->validate([
-            // 'image' => 'required',
+            'image' => 'required',
             // 'image.*' => 'mimes:jpeg,jpg,png',
             'name' => 'required',
             'price' => 'required',
@@ -46,14 +48,14 @@ class DashboardController extends Controller
             foreach ($request->file('image') as $file) {
                 $name = $file->getClientOriginalName();
                 $file->move(public_path() . '/uploads/', $name);
-                $path[] = 'uploads/'.$name;
+                $path[] = 'uploads/' . $name;
                 $imgData[] = $name;
             }
             $pathEncode = json_encode($path);
             $pathDecode = json_decode($pathEncode);
             $stringPath = implode(', ', $pathDecode);
             // dd($stringPath);
-
+        }
             $user_id = Auth::id();
             $slug = Str::slug($validatedData['name']);
             $categories = $request->category;
@@ -71,24 +73,82 @@ class DashboardController extends Controller
             $item->categories()->attach($categories);
             // Item::create($validatedData);
             return redirect(route('my.item'))->with('success', 'Item Added Successfully');
-        }
     }
 
-    public function editItem(){
+    public function editItem(Item $item)
+    {
         return view('dashboard-page.product.edit', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'item' => $item
         ]);
     }
 
-    public function destroyItem(Item $item){
-        if ($item->image){
-            unlink($item->image);
+    public function updateitem(Request $request, Item $item){
+        $rules = [
+            // 'image' => 'required',
+            // 'image.*' => 'mimes:jpeg,jpg,png',
+            'name' => 'required',
+            'price' => 'required',
+            // 'category' => 'required',
+            'shipment' => 'required',
+            'stock' => 'required',
+        ];
+        $slug = Str::slug($request->name);
+        $request['slug'] = $slug;
+
+        $validateData = $request->validate($rules);
+        // dd($validateData);
+
+        if($request->description != $item->description){
+            $rules['description'] = 'required';
+        }
+
+        // dd($request);
+        $categories = $request->category;
+
+        if($request->hasFile('image')){
+            if($item->image){
+                unlink($item->image);
+            }
+            foreach ($request->file('image') as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move(public_path() . '/uploads/', $name);
+                $path[] = 'uploads/' . $name;
+                $imgData[] = $name;
+            }
+            $pathEncode = json_encode($path);
+            $pathDecode = json_decode($pathEncode);
+            $stringPath = implode(', ', $pathDecode);
+            // dd($stringPath);
+            $rules['image'] = $stringPath;
+
+        }
+        $rules['user_id'] = Auth::id();
+
+        // dd($request->validate($rules));
+        // $validateData = Validator::make($request->all(), $rules);
+        // if ($validateData->fails()) {
+        //     // Jika validasi gagal, tampilkan error
+        //     return response()->json(['error' => $validateData->errors()], 400);
+        // }
+
+
+        Item::where('id', $item->id)->update($validateData);
+        $item->categories()->sync($categories);
+
+        return redirect(route('my.item'))->with('success', 'Item Updated Successfully');
+    }
+
+    public function destroyItem(Item $item)
+    {
+        if (File::exists($item->image)) {
+            if ($item->image) {
+                unlink($item->image);
+            }
         }
         $item = Item::find($item->id);
-        // dd($item);
         $item->delete();
         return redirect(route('my.item'))->with('success', 'Item Deleted Successfully');
-
     }
 
     public function test()

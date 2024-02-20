@@ -90,7 +90,7 @@
         $('#backDropModalDelete').on('show.bs.modal', function (e) {
             var item = $(e.relatedTarget).data('id');
             console.log(item);
-            $(e.currentTarget).find('#form-delete').attr('action', '/product/' + item + '/delete');
+            $(e.currentTarget).find('#form-delete').attr('action', '/product/' + item);
         });
     </script>
 @endsection
