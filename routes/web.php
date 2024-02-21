@@ -37,7 +37,7 @@ Route::get('/shop', function () {
     return view('main-page.index',[
         'items' => Item::all()
     ]);
-});
+})->name('shop');
 
 
 //User Permissions

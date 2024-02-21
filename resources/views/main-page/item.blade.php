@@ -17,12 +17,19 @@
                                 <div class="col-lg-12">
                                     <h3>{{ $name }}</h3>
                                     <h3 style="-webkit-text-stroke:1px rgb(0, 0, 0); color:white; margin-bottom:3%;">Rp. {{ $price }}</h3>
+                                    <h6>Stock: {{ $stock }}</h6>
                                     <textarea rows="12" cols="75" style="resize: none;
                                      white-space: pre-wrap; word-wrap: break-word" disabled>{{ $description }}</textarea>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div class="white-button scroll-to-section mt-3">
+                                        <button style="background-color: rgb(122, 120, 120)" class="btn mt-3 me-5" onclick="history.back();">Go Back</i></a>
+                                        <button disabled style="background-color: rgb(220, 220, 22)" class="btn mt-3 me-5" onclick="history.back();">Add to Cart</i></a>
+                                        <button class="btn btn-primary mt-3 me-5" onclick="history.back();">Buy Now</i></a>
+                                    {{-- <div class="white-button mt-3">
                                         <a href="#contact">Buy it now!</i></a>
+                                    </div>
+                                    <div class="white-button mt-3">
+                                        <a href="#contact">Buy it now!</i></a> --}}
                                     </div>
                                 </div>
                             </div>
