@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_cart', function (Blueprint $table) {
+        Schema::create('users_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('item_id');
-            $table->integer('amount');
+            $table->unsignedInteger('quantity')->default(1);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_cart');
+        Schema::dropIfExists('carts_items');
     }
 };

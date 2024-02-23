@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/product/{item:id}', [DashboardProductController::class, 'updateItem'])->name('update.item');
     //Cart
     Route::get('/cart', [DashboardCartController::class, 'index'])->name('my.cart');
+    Route::post('/{item:slug}/test', [DashboardCartController::class, 'store'])->name('store.cart');
     //History
     Route::get('/history', [DashboardHistoryController::class, 'index'])->name('my.history');
     //Home

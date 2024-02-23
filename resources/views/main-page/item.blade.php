@@ -8,6 +8,14 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
+                        <div class="app-content">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+                        </div>
                         <div class="row mb-5 d-flex">
                             <div class="col-md-9 col-lg-6">
                                 <div class="card h-100">
@@ -20,14 +28,18 @@
                                                 @endphp
                                                 @foreach ($imagePaths as $key => $img)
                                                     <button type="button" data-bs-target="#carouselExample"
-                                                        data-bs-slide-to="{{ $key }}" class="@if ($loop->first) active @endif" aria-current="true"></button>
+                                                        data-bs-slide-to="{{ $key }}"
+                                                        class="@if ($loop->first) active @endif"
+                                                        aria-current="true"></button>
                                                 @endforeach
                                             </div>
                                             <div class="carousel-inner" style="align-content: center">
                                                 @foreach ($imagePaths as $key => $img)
-                                                <div class="carousel-item @if ($loop->first) active @endif">
-                                                    <img class="d-block" style="width: 620px; height:620px" src="{{ $img }}"/>
-                                                </div>
+                                                    <div
+                                                        class="carousel-item @if ($loop->first) active @endif">
+                                                        <img class="d-block" style="width: 620px; height:620px"
+                                                            src="{{ $img }}" />
+                                                    </div>
                                                 @endforeach
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExample" role="button"
@@ -60,8 +72,10 @@
                                         </p>
                                     </div>
                                     <h5 class="card-header d-flex justify-content-between">
-                                        <button onclick="history.back()" class="btn btn-dark"><i class="mdi mdi-keyboard-backspace pe-2"></i> Back</button>
-                                        <a href="#" class="btn btn-success">Add to Cart</a>
+                                        <button onclick="history.back()" class="btn btn-dark"><i
+                                                class="mdi mdi-keyboard-backspace pe-2"></i> Back</button>
+                                        <button data-bs-toggle="modal" data-bs-target="#modalCenter" type="button"
+                                            class="btn btn-success">Add to Cart</button>
                                         <a href="#" class="btn btn-primary">Buy Now!</a>
                                     </h5>
                                 </div>
@@ -78,4 +92,61 @@
             <!-- / Layout page -->
         </div>
     </div>
+
+    <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalCenterTitle">Add to Cart</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('store.cart', $item->slug) }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col me-4">
+                                <div class="input-group d-flex justify-content-between">
+                                    <span class="input-group-btn">
+                                        <button onclick="decrement()" type="button" class="btn btn-outline-danger"
+                                            data-type="minus" data-field="">
+                                            <span class="mdi mdi-minus"></span>
+                                        </button>
+                                    </span>
+                                    <input style="height: 100%;" name="quantity" type="number" id="quantity"
+                                        class="form-control ms-1 me-1" min="1" value="1" />
+                                    <span class="input-group-btn">
+                                        <button onclick="increment()" type="button" class="btn btn-outline-success"
+                                            data-type="plus" data-field="">
+                                            <span class="mdi mdi-plus"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
+<script>
+    function increment() {
+        let amountInput = document.getElementById('quantity');
+        amountInput.value = parseInt(amountInput.value) + 1;
+    }
+
+    function decrement() {
+        let amountInput = document.getElementById('quantity');
+        let currentValue = parseInt(amountInput.value);
+
+        if (currentValue > 1) {
+            amountInput.value = currentValue - 1;
+        }
+    }
+</script>

@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('item_id');
             $table->foreignId('user_id');
-            $table->foreignId('selected_shipment');
-            $table->integer('amount');
+            $table->string('receiver');
+            $table->text('address');
+            $table->foreignId('shipment_id');
             $table->integer('total_price');
+            $table->string('status')->default('Packaging');
             $table->rememberToken();
             $table->timestamps();
         });

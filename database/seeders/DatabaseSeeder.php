@@ -7,6 +7,8 @@ namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\Item;
+use App\Models\Cart;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,14 +26,22 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ItemSeeder::class,
+            UserSeeder::class,
         ]);
 
         $categories = Category::all();
-        Item::all()->each(function ($item) use ($categories){
-            $item->categories()->attach(
-                $categories->random(rand(1, 3))->pluck('id')->toArray()
+        Item::all()->each(
+            function ($item) use ($categories) {
+                $item->categories()->attach(
+                    $categories->random(rand(1, 3))->pluck('id')->toArray()
+                );
+            }
+        );
+        $users = User::all();
+        Item::all()->each(function ($item) use ($users) {
+            $item->users()->attach(
+                $users->random()->pluck('id')->toArray()
             );
-        }
-    );
+        });
     }
 }

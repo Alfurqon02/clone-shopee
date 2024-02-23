@@ -27,7 +27,7 @@
                                                            class="badge bg-label-info mb-1">{{ $categories->name }}</span>
                                                    @endforeach
                                                </p>
-                                               <strong class="card-text">Rp. {{ $item->price }}</strong>
+                                               <strong class="card-text">@money($item->price)</strong>
                                            </div>
                                        </a>
                                    </div>

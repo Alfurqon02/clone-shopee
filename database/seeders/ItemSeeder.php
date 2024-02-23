@@ -36,7 +36,7 @@ class ItemSeeder extends Seeder
                 'name' => 'Item ' . $i,
                 'slug'=> 'Item-'.$i,
                 'user_id' => rand(1, 10), // Adjust the range based on your seller IDs
-                'image' => 'path/to/your/image' . $i . '.jpg', // Adjust the path based on your image path
+                'image' => 'uploads/bright-jupiter-cute-planet-pixel-art-style-space-background-glossy-200548647.jpg', // Adjust the path based on your image path
                 'description' => generateRandomText(1000) . $i,
                 'price' => rand(10000, 100000), // Adjust the range based on your price range
                 'stock' => rand(1, 50), // Adjust the range based on your stock range

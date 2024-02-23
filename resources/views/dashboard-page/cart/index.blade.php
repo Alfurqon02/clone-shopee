@@ -45,7 +45,7 @@
                                                 </button>
                                             </span>
                                             <input style="height:70%" name="amount" type="number" id="amount"
-                                                class="form-control ms-1 me-1" min="0" value="1" />
+                                                class="form-control ms-1 me-1" min="0" value="{{ $item->quantity }}" />
                                             <span class="input-group-btn">
                                                 <button onclick="increment()" type="button" class="btn btn-outline-success"
                                                     data-type="plus" data-field="">
@@ -60,9 +60,9 @@
                             <hr>
                         @endforeach
                     </div>
-                    <h5 class="card-header d-flex justify-content-between">
-                        <button onclick="history.back()" class="btn btn-dark"><i
-                                class="mdi mdi-keyboard-backspace pe-2"></i> Back</button>
+                    <h5 class="card-header ms-auto">
+                        {{-- <button onclick="history.back()" class="btn btn-dark"><i
+                                class="mdi mdi-keyboard-backspace pe-2"></i> Back</button> --}}
                         <a href="#" class="btn btn-primary">Checkout</a>
                     </h5>
                 </div>
