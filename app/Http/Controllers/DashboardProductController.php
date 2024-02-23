@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\Validator;
 
 class DashboardProductController extends Controller
@@ -57,23 +58,26 @@ class DashboardProductController extends Controller
             $stringPath = implode(', ', $pathDecode);
             // dd($stringPath);
         }
-            $user_id = Auth::id();
-            $slug = Str::slug($validatedData['name']);
-            $categories = $request->category;
-            // dd($categories);
-            $item = new Item();
-            // $item->image = json_encode($imgData);
-            // $path = $item->image_path = json_encode($file);
-            // dd($path);
-            $item->fill(array_merge($validatedData, [
-                'slug' => $slug,
-                'user_id' => $user_id,
-                'image' => $stringPath
-            ]));
-            $item->save();
-            $item->categories()->attach($categories);
-            // Item::create($validatedData);
-            return redirect(route('my.item'))->with('success', 'Item Added Successfully');
+        $item = new Item();
+        $user_id = Auth::id();
+        $slug = Str::slug($validatedData['name']);
+        $idSlug = $item->id . $slug;
+        $hashSlug = Hash::make($idSlug);
+        $shortSlug = substr($hashSlug, 0, 8);
+        $categories = $request->category;
+        // dd($categories);
+        // $item->image = json_encode($imgData);
+        // $path = $item->image_path = json_encode($file);
+        // dd($path);
+        $item->fill(array_merge($validatedData, [
+            'slug' => $shortSlug,
+            'user_id' => $user_id,
+            'image' => $stringPath
+        ]));
+        $item->save();
+        $item->categories()->attach($categories);
+        // Item::create($validatedData);
+        return redirect(route('my.item'))->with('success', 'Item Added Successfully');
     }
 
     public function editItem(Item $item)
@@ -84,7 +88,8 @@ class DashboardProductController extends Controller
         ]);
     }
 
-    public function updateitem(Request $request, Item $item){
+    public function updateitem(Request $request, Item $item)
+    {
         $rules = [
             // 'image' => 'required',
             // 'image.*' => 'mimes:jpeg,jpg,png',
@@ -100,15 +105,15 @@ class DashboardProductController extends Controller
         $validateData = $request->validate($rules);
         // dd($validateData);
 
-        if($request->description != $item->description){
+        if ($request->description != $item->description) {
             $rules['description'] = 'required';
         }
 
         // dd($request);
         $categories = $request->category;
 
-        if($request->hasFile('image')){
-            if($item->image){
+        if ($request->hasFile('image')) {
+            if ($item->image) {
                 unlink($item->image);
             }
             foreach ($request->file('image') as $file) {
@@ -122,7 +127,6 @@ class DashboardProductController extends Controller
             $stringPath = implode(', ', $pathDecode);
             // dd($stringPath);
             $rules['image'] = $stringPath;
-
         }
         $rules['user_id'] = Auth::id();
 

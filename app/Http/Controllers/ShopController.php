@@ -11,11 +11,7 @@ class ShopController extends Controller
 
     public function item(Item $item){
         return view ('main-page.item',[
-            'name'=>$item->name,
-            'price'=>$item->price,
-            'description'=>$item->description,
-            'stock'=>$item->stock,
-            'image'=>$item->image
+            'item'=>$item
         ]);
     }
 }

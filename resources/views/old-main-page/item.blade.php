@@ -1,53 +1,7 @@
+@extends('layouts.main')
+@section('container')
 
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-
-    <title>myShoppu</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!--
-
-TemplateMo 570 Chain App Dev
-
-https://templatemo.com/tm-570-chain-app-dev
-
--->
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-  </head>
-  @include('layouts.header')
-<body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <div id="modal" class="popupContainer" style="display:none;">
+<div id="modalBuy" class="popupContainer" style="display:none;">
     <div class="popupHeader">
         <span class="header_title">Login</span>
         <span class="modal_close"><i class="fa fa-times"></i></span>
@@ -131,18 +85,45 @@ https://templatemo.com/tm-570-chain-app-dev
     </section>
 </div>
 
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="right-image wow fadeInRight me-5" data-wow-duration="1s" data-wow-delay="0.5s"
+                                style="width: 200px; height: 200px; max-width:100%; max-height:100%;">
+                                <img src="{{ asset($image) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <div class="ms-5 left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
+                                data-wow-delay="1s">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h3>{{ $name }}</h3>
+                                        <h3 style="-webkit-text-stroke:1px rgb(0, 0, 0); color:white; margin-bottom:3%;">Rp.
+                                            {{ $price }}</h3>
+                                        <h6>Stock: {{ $stock }}</h6>
+                                        <textarea rows="12" cols="75"
+                                            style="resize: none;
+                                     white-space: pre-wrap; word-wrap: break-word" disabled>{{ $description }}</textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button style="background-color: rgb(122, 120, 120)" class="btn mt-3 me-5"
+                                            onclick="history.back();">Go Back</i></button>
+                                        <button disabled style="background-color: rgb(220, 220, 22)"
+                                            class="btn mt-3 me-5">Add to Cart</i></button>
+                                        <a id="modal_trigger" href="#modalBuy" class="btn btn-primary mt-3 me-5">Buy Now</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-@yield('container')
-
-
-</body>
-<!-- Scripts -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/owl-carousel.js"></script>
-<script src="assets/js/animation.js"></script>
-<script src="assets/js/imagesloaded.js"></script>
-<script src="assets/js/popup.js"></script>
-<script src="assets/js/custom.js"></script>
-</html>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+@endsection

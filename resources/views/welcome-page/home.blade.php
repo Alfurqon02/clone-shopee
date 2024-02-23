@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('welcome-page.layouts.main')
 @section('container')
     {{-- @if (session('showModal'))
         <script>
