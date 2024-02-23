@@ -18531,3 +18531,9 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .footer.bg-lighter hr {
   border-color: rgba(84, 79, 90, 0.0765686274);
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

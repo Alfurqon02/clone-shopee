@@ -40,7 +40,7 @@
                             </td>
                             <td>{{ $item->stock }}</td>
                             <td></td>
-                            <td>{{ $item->price }}</td>
+                            <td>@money($item->price)</td>
                             <th>
                                 <div>
                                     <a style="border: transparent" href="{{ route('item', $item->slug) }}"
