@@ -7,7 +7,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\Item;
-use App\Models\Cart;
+use App\Models\Shipment;
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ItemSeeder::class,
             UserSeeder::class,
+            ShipmentSeeder::class,
         ]);
 
         $categories = Category::all();
@@ -41,6 +42,12 @@ class DatabaseSeeder extends Seeder
         Item::all()->each(function ($item) use ($users) {
             $item->users()->attach(
                 $users->random()->pluck('id')->toArray()
+            );
+        });
+        $shipments = Shipment::all();
+        Item::all()->each(function ($item) use ($shipments) {
+            $item->shipments()->attach(
+                $shipments->random(rand(1, 5))->pluck('id')->toArray()
             );
         });
     }

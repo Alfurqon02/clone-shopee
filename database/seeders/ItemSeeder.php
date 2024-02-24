@@ -40,7 +40,7 @@ class ItemSeeder extends Seeder
                 'description' => generateRandomText(1000) . $i,
                 'price' => rand(10000, 100000), // Adjust the range based on your price range
                 'stock' => rand(1, 50), // Adjust the range based on your stock range
-                'shipment' => 'Shipment method for Item ' . $i,
+                // 'shipment' => rand(1, 3),
             ]);
         }
     }

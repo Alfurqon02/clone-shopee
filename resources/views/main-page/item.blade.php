@@ -12,7 +12,8 @@
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible" role="alert">
                                     {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                             @endif
                         </div>
@@ -76,7 +77,8 @@
                                                 class="mdi mdi-keyboard-backspace pe-2"></i> Back</button>
                                         <button data-bs-toggle="modal" data-bs-target="#modalCenter" type="button"
                                             class="btn btn-success">Add to Cart</button>
-                                        <a href="#" class="btn btn-primary">Buy Now!</a>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#modalBuy"
+                                            class="btn btn-primary">Buy Now!</button>
                                     </h5>
                                 </div>
                             </div>
@@ -105,6 +107,71 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col me-4">
+                                <div class="input-group d-flex justify-content-between">
+                                    <span class="input-group-btn">
+                                        <button onclick="decrement()" type="button" class="btn btn-outline-danger"
+                                            data-type="minus" data-field="">
+                                            <span class="mdi mdi-minus"></span>
+                                        </button>
+                                    </span>
+                                    <input style="height: 100%;" name="quantity" type="number" id="quantity"
+                                        class="form-control ms-1 me-1" min="1" value="1" />
+                                    <span class="input-group-btn">
+                                        <button onclick="increment()" type="button" class="btn btn-outline-success"
+                                            data-type="plus" data-field="">
+                                            <span class="mdi mdi-plus"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalBuy" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalCenterTitle">Add to Cart</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('store.cart', $item->slug) }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col me-4">
+                                <div class="input-group">
+                                    <div class="form-floating form-floating-outline mb-4">
+                                        <input name="name" type="text" id="name" class="form-control"
+                                            placeholder="Receiver Name" />
+                                        <label for="name">Receiver Name</label>
+                                    </div>
+                                    <div class="form-floating form-floating-outline mb-4">
+                                        <input name="address" type="text" id="address" class="form-control"
+                                            placeholder="Address" />
+                                        <label for="Address">Address</label>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="form-floating form-floating-outline mb-4">
+                                        <select class="form-select" name="Shipment" id="Shipment" class="form-control">
+                                            @foreach ($item->shipments as $shipment)
+                                            <option value="{{ $shipment->id }}">{{ $shipment->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="Shipment">Shipment</label>
+                                        {{-- <input name="shipment" type="select" id="shipment" class="form-control"
+                                            placeholder="Choose Shipment" multiple /> --}}
+                                    </div>
+                                </div>
                                 <div class="input-group d-flex justify-content-between">
                                     <span class="input-group-btn">
                                         <button onclick="decrement()" type="button" class="btn btn-outline-danger"

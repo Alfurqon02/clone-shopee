@@ -14,7 +14,7 @@ class Item extends Model
         'name',
         'price',
         'slug',
-        'shipment',
+        // 'shipment',
         'stock',
         'description',
         'user_id',
@@ -27,6 +27,10 @@ class Item extends Model
     }
     public function users(){
         return $this->belongsToMany(User::class, 'users_items', 'item_id', 'user_id');
+    }
+
+    public function shipments(){
+        return $this->belongsToMany(Shipment::class, 'items_shipments', 'shipment_id', 'item_id');
     }
 
 

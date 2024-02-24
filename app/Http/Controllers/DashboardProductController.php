@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
+use App\Models\Shipment;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -23,14 +24,15 @@ class DashboardProductController extends Controller
     {
         $myItems = Item::where('user_id', Auth::user()->id)->get();
         return view('dashboard-page.product.index', [
-            'items' => $myItems
+            'items' => $myItems,
         ]);
     }
 
     public function addItem()
     {
         return view('dashboard-page.product.create', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'shipments' => Shipment::all()
         ]);
     }
 
@@ -65,6 +67,7 @@ class DashboardProductController extends Controller
         $hashSlug = Hash::make($idSlug);
         $shortSlug = substr($hashSlug, 0, 8);
         $categories = $request->category;
+        $shipments = $request->shipment;
         // dd($categories);
         // $item->image = json_encode($imgData);
         // $path = $item->image_path = json_encode($file);
@@ -76,6 +79,7 @@ class DashboardProductController extends Controller
         ]));
         $item->save();
         $item->categories()->attach($categories);
+        $item->shipments()->attach($shipments);
         // Item::create($validatedData);
         return redirect(route('my.item'))->with('success', 'Item Added Successfully');
     }
@@ -95,8 +99,8 @@ class DashboardProductController extends Controller
             // 'image.*' => 'mimes:jpeg,jpg,png',
             'name' => 'required',
             'price' => 'required',
-            // 'category' => 'required',
-            'shipment' => 'required',
+            'category' => 'required',
+            // 'shipment' => 'required',
             'stock' => 'required',
         ];
         $slug = Str::slug($request->name);

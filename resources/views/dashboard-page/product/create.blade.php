@@ -49,9 +49,11 @@
                                         <label for="stock">Stock</label>
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
-                                        <select name="shipment" id="shipment" class="form-select">
-                                            <option value="1">COD</option>
-                                            <option value="2">Cash</option>
+                                        <select multiple name="shipment[]" id="shipment[]" class="form-select"style="height: 300%">
+                                            <option disabled>Select the shipment you need</option>
+                                            @foreach ($shipments as $shipment)
+                                            <option value="{{ $shipment->id }}">{{ $shipment->name }}</option>
+                                            @endforeach
                                         </select>
                                         <label for="shipment">Shipment</label>
                                     </div>

@@ -19,6 +19,7 @@ class DashboardCartController extends Controller
                 ->select('items.name AS name',
                         'items.image AS image',
                         'items.price AS price',
+                        'users.name AS user_name',
                         'users_items.quantity AS quantity')
                 ->get();
         // dd($item);

@@ -32,6 +32,7 @@
                                 <img style="width: 100px; height: 100px" src="{{ $firstImagePath }}" alt="">
                                 <div class="ms-2">
                                     <p style="font-size: 40px">{{ $item->name }}</p>
+                                    {{-- <p>{{ $item->user_name }}</p> --}}
                                     <p style="color: #9055FD">@money($item->price)</p>
                                 </div>
                                 <div>
