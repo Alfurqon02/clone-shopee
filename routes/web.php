@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/product/add', [DashboardProductController::class, 'addItem'])->name('add.item');
     Route::post('/product', [DashboardProductController::class, 'storeItem'])->name('store.item');
     Route::get('/product/{item:slug}/edit', [DashboardProductController::class, 'editItem'])->name('edit.item');
+    Route::post('/{item:slug}', [ShopController::class, 'buy'])->name('buy.item');
     Route::delete('/product/{item:id}', [DashboardProductController::class, 'destroyItem'])->name('destroy.item');
     Route::put('/product/{item:id}', [DashboardProductController::class, 'updateItem'])->name('update.item');
     //Cart

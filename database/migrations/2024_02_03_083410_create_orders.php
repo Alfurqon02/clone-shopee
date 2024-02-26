@@ -19,7 +19,8 @@ return new class extends Migration
             $table->text('address');
             $table->foreignId('shipment_id');
             $table->integer('total_price');
-            $table->string('status')->default('Packaging');
+            $table->integer('quantity');
+            $table->string('status')->default('Not Confirmed');
             $table->rememberToken();
             $table->timestamps();
         });

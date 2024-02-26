@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $users = User::all();
         Item::all()->each(function ($item) use ($users) {
             $item->users()->attach(
-                $users->random()->pluck('id')->toArray()
+                $users->random(rand(1, 3))->pluck('id')->toArray()
             );
         });
         $shipments = Shipment::all();
