@@ -54,24 +54,24 @@ class DashboardHomeController extends Controller
             ->get();
 
         $all_orders = DB::table('orders')
-        ->join('items', 'items.id', '=', 'orders.item_id')
-        ->join('users', 'users.id', '=', 'items.user_id')
-        ->join('users as buyer', 'buyer.id', '=', 'orders.user_id')
-        ->join('shipments', 'shipments.id', '=', 'orders.shipment_id')
-        ->where('items.user_id', '=', Auth::user()->id)
-        ->select(
-            'items.stock AS stock',
-            'items.name AS name',
-            'orders.quantity AS amount',
-            'orders.total_price AS total_price',
-            'buyer.name AS buyer_name',
-            'orders.id AS order_id',
-            'orders.address AS address',
-            'orders.receiver AS receiver_name',
-            'shipments.name AS shipment',
-            'orders.status AS status',
-        )
-        ->get();
+            ->join('items', 'items.id', '=', 'orders.item_id')
+            ->join('users', 'users.id', '=', 'items.user_id')
+            ->join('users as buyer', 'buyer.id', '=', 'orders.user_id')
+            ->join('shipments', 'shipments.id', '=', 'orders.shipment_id')
+            ->where('items.user_id', '=', Auth::user()->id)
+            ->select(
+                'items.stock AS stock',
+                'items.name AS name',
+                'orders.quantity AS amount',
+                'orders.total_price AS total_price',
+                'buyer.name AS buyer_name',
+                'orders.id AS order_id',
+                'orders.address AS address',
+                'orders.receiver AS receiver_name',
+                'shipments.name AS shipment',
+                'orders.status AS status',
+            )
+            ->get();
 
         $sales = DB::table('orders')
             ->join('items', 'items.id', '=', 'orders.item_id')
@@ -102,6 +102,26 @@ class DashboardHomeController extends Controller
             ->get()
             ->sum('amount');
 
+        $purchase = DB::table('orders')
+            ->join('items', 'items.id', '=', 'orders.item_id')
+            ->join('users', 'users.id', '=', 'items.user_id')
+            ->join('users as buyer', 'buyer.id', '=', 'orders.user_id')
+            ->join('shipments', 'shipments.id', '=', 'orders.shipment_id')
+            ->where('orders.user_id', '=', Auth::user()->id)
+            ->select(
+                'items.stock AS stock',
+                'items.name AS name',
+                'orders.quantity AS amount',
+                'orders.total_price AS total_price',
+                'orders.receiver AS receiver',
+                'orders.id AS order_id',
+                'orders.address AS address',
+                'orders.receiver AS receiver_name',
+                'shipments.name AS shipment',
+                'orders.status AS status',
+            )
+            ->get();
+
         return view('dashboard-page.home.index', [
             'items' => $item,
             'confirmed_item' => $confirmed_item,
@@ -110,6 +130,7 @@ class DashboardHomeController extends Controller
             'products' => $products,
             'amount' => $amount,
             'all_orders' => $all_orders,
+            'purchase' => $purchase,
         ]);
     }
 

@@ -79,7 +79,8 @@
             </div>
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div class="row d-flex justify-content-between">
-                    <a href="#sectionOrders" class="col-md col-lg-3" style="background-color: transparent;border:transparent">
+                    <a href="#sectionOrders" class="col-md col-lg-3"
+                        style="background-color: transparent;border:transparent">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <h3>All Orders</h3>
@@ -89,7 +90,8 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#sectionNeedConfrim" class="col-md col-lg-3" style="background-color: transparent;border:transparent">
+                    <a href="#sectionNeedConfrim" class="col-md col-lg-3"
+                        style="background-color: transparent;border:transparent">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <h3>Need to Confirm</h3>
@@ -99,7 +101,8 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#sectionConfirmed" class="col-md col-lg-3" style="background-color: transparent;border:transparent">
+                    <a href="#sectionConfirmed" class="col-md col-lg-3"
+                        style="background-color: transparent;border:transparent">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <h3>Confirmed Orders</h3>
@@ -109,7 +112,8 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#sectionPurchase" class="col-md col-lg-3" style="background-color: transparent;border:transparent">
+                    <a href="#sectionPurchase" class="col-md col-lg-3"
+                        style="background-color: transparent;border:transparent">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <h3>Your Purchase</h3>
@@ -127,7 +131,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="products-area-wrapper tableView">
-                                <table id="purchase" class="table table-striped" style="width:100%">
+                                <table id="orders" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -153,12 +157,11 @@
                                                             data-bs-target="#modalDetail{{ $item->order_id }}"></i></a>
                                                 </td>
                                                 <td><strong
-                                                    @if($item->status == "Rejected")
-                                                    style="color: red"
+                                                        @if ($item->status == 'Rejected') style="color: red"
+                                                        @elseif ($item->status == 'Not Confirmed')
+                                                style="color: yellowgreen"
                                                     @else
-                                                    style="color: green"
-                                                    @endif
-                                                    >{{ $item->status }}</strong>
+                                                    style="color: green" @endif>{{ $item->status }}</strong>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="modalDetail{{ $item->order_id }}" tabindex="-1"
@@ -205,7 +208,6 @@
                                                                 data-bs-dismiss="modal">
                                                                 Close
                                                             </button>
-                                                            {{-- <button type="submit" class="btn btn-primary">Buy</button> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -423,7 +425,6 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Stock</th>
                                             <th>Buyer Name</th>
                                             <th>Amount</th>
                                             <th>Total Price</th>
@@ -432,11 +433,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($confirmed_item as $item)
+                                        @foreach ($purchase as $item)
                                             <tr>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{ $item->stock }}</td>
-                                                <td>{{ $item->buyer_name }}</td>
+                                                <td>{{ $item->receiver }}</td>
                                                 <td>{{ $item->amount }}</td>
                                                 <td>@money($item->total_price)</td>
                                                 <td><a style="border: transparent" href="#"
@@ -444,7 +444,12 @@
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#modalDetail{{ $item->order_id }}"></i></a>
                                                 </td>
-                                                <td><strong style="color: green">{{ $item->status }}</strong>
+                                                <td><strong
+                                                        @if ($item->status == 'Rejected') style="color: red"
+                                                @elseif ($item->status == 'Not Confirmed')
+                                                style="color: yellowgreen"
+                                                    @else
+                                                    style="color: green" @endif>{{ $item->status }}</strong>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="modalDetail{{ $item->order_id }}" tabindex="-1"
@@ -491,7 +496,6 @@
                                                                 data-bs-dismiss="modal">
                                                                 Close
                                                             </button>
-                                                            {{-- <button type="submit" class="btn btn-primary">Buy</button> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -501,7 +505,6 @@
                                 </table>
                             </div>
                         </div>
-                        <!--/ Layout Demo -->
                     </div>
                 </div>
             </div>
@@ -510,6 +513,7 @@
 
     <script>
         $(document).ready(function() {
+            $('#orders').DataTable();
             $('#item').DataTable();
             $('#confirmItem').DataTable();
             $('#purchase').DataTable();
