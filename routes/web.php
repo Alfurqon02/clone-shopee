@@ -39,6 +39,9 @@ Route::get('/shop', function () {
     ]);
 })->name('shop');
 
+Route::post('/register', [UserController::class,'register'])->name('register.submit');
+Route::post('/login', [UserController::class,'login'])->name('login.submit');
+Route::post('/logout', [UserController::class,'logout'])->name('logout');
 
 //User Permissions
 Route::middleware(['auth'])->group(function () {
@@ -58,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/history', [DashboardHistoryController::class, 'index'])->name('my.history');
     //Home
     Route::get('/home', [DashboardHomeController::class, 'index'])->name('my.home');
+    Route::put('/home/{order:id}/confirm', [DashboardHomeController::class, 'confirm'])->name('order.confirm');
     //Settings Page
     //Account
     Route::get('/account', [SettingsAccountController::class, 'index'])->name('my.account');
@@ -77,9 +81,6 @@ Route::get('/admin/product', [AdminProductController::class, 'index'])->name('ad
 //Category
 Route::get('/admin/category', [AdminCategoryController::class, 'index'])->name('admin.category');
 
-Route::post('/register', [UserController::class,'register'])->name('register.submit');
-Route::post('/login', [UserController::class,'login'])->name('login.submit');
-Route::post('/logout', [UserController::class,'logout'])->name('logout');
 
 Route::get('/{item:slug}',[ShopController::class,'item'])->name('item');
 

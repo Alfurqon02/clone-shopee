@@ -32,6 +32,9 @@ class Item extends Model
     public function shipments(){
         return $this->belongsToMany(Shipment::class, 'items_shipments', 'shipment_id', 'item_id');
     }
+    public function orders(){
+        return $this->hasMany(Order::class, 'orders', 'item_id');
+    }
 
 
 }

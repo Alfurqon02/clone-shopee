@@ -18,6 +18,7 @@
             <table id="product" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Category</th>
                         <th>Stock</th>
@@ -29,6 +30,7 @@
                 <tbody>
                     @foreach ($items as $item)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
                                 @foreach ($item->categories as $index => $category)

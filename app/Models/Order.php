@@ -19,4 +19,12 @@ class Order extends Model
         'quantity',
         'status',
     ];
+
+    public function items(){
+        return $this->belongsToMany(Order::class, 'orders', 'item_id');
+    }
+    public function users(){
+        return $this->belongsTo(User::class, 'orders', 'user_id');
+    }
+
 }

@@ -59,7 +59,11 @@
                             </div>
                             <div class="col-md-9 col-lg-6">
                                 <div class="card overflow-hidden" style="height: 659px">
-                                    <h5 class="card-header" style="font-size: 50px">{{ $item->name }}</h5>
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="card-header" style="font-size: 50px">{{ $item->name }}</h5>
+                                        <p class="mt-auto mb-auto me-5">{{ $seller }}</p>
+                                    </div>
+
                                     <div class="ms-4 d-flex">
                                         @foreach ($item->categories as $categories)
                                             <span class="badge bg-label-primary me-2">{{ $categories->name }}</span>

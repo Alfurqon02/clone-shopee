@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -14,9 +15,15 @@ class ShopController extends Controller
 
     public function item(Item $item){
 
-        // dd(Auth::user()->id, $item->user_id);
+        $seller = DB::table('users')
+                            ->where('users.id', '=', $item->user_id)
+                            ->select('name')
+                            ->get();
+        $seller = json_encode($seller[0]->name);
+        $seller = trim($seller, '"');
         return view ('main-page.item',[
-            'item'=>$item
+            'item'=>$item,
+            'seller'=> $seller,
         ]);
     }
 

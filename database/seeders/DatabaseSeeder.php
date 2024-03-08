@@ -4,11 +4,16 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Category;
-use Illuminate\Database\Seeder;
 use App\Models\Item;
-use App\Models\Shipment;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Shipment;
+use Illuminate\Database\Seeder;
+use Database\Seeders\ItemSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\ShipmentSeeder;
+use Database\Seeders\OrderSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,10 +29,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            CategorySeeder::class,
-            ItemSeeder::class,
-            UserSeeder::class,
-            ShipmentSeeder::class,
+            // CategorySeeder::class,
+            // ItemSeeder::class,
+            // UserSeeder::class,
+            // ShipmentSeeder::class,
+            OrderSeeder::class,
         ]);
 
         $categories = Category::all();
