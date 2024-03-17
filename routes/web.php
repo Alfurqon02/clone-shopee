@@ -29,7 +29,7 @@ use App\Http\Controllers\AdminNotificationController;
 
 Route::get('/', function () {
     return view('welcome-page.home',[
-        'categories' => Category::all()
+        'categories' => Category::all(),
     ]);
 })->name('landing-page');
 
@@ -40,7 +40,7 @@ Route::get('/shop', function () {
 })->name('shop');
 
 Route::post('/register', [UserController::class,'register'])->name('register.submit');
-Route::post('/login', [UserController::class,'login'])->name('login.submit');
+Route::post('/login', [UserController::class,'login'])->name('login.submit')->middleware('throttle:10,1');;
 Route::post('/logout', [UserController::class,'logout'])->name('logout');
 
 //User Permissions
